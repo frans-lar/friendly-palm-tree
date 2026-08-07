@@ -23,6 +23,7 @@ function blockScope()
     {
         let msg = "Hello World";
         const greet ="Hello const";
+       
         //console.log(msg);
         //console.log(greet);
     }

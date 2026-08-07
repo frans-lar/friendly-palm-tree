@@ -1,0 +1,21 @@
+{
+  "name": "friendly-palm-tree",
+  "version": "1.0.0",
+  "description": "Repo för att ha mina personliga projekt",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frans-lar/friendly-palm-tree.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/frans-lar/friendly-palm-tree/issues"
+  },
+  "homepage": "https://github.com/frans-lar/friendly-palm-tree#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.1.2"
+  }
+}

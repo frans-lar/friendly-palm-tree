@@ -22,9 +22,12 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test
+    - name: Set timestamp
+      id: timestamp
+      run: echo "value=$(date +'%Y-%m-%d_%H-%M-%S')" >> $GITHUB_OUTPUT
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
-        name: playwright-report
+        name: Testrapport-${{ steps.timestamp.outputs.value }}
         path: playwright/playwright-report/
         retention-days: 30

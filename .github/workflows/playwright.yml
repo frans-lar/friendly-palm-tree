@@ -24,7 +24,11 @@ jobs:
       run: npx playwright test
     - name: Set timestamp
       id: timestamp
-      run: echo "value=$(TZ='Europe/Stockholm' date +'%Y-%m-%d_%H-%M-%S')" >> $GITHUB_OUTPUT
+      run: |
+        SHORT_SHA=$(echo ${{ github.sha }} | cut -c1-7)
+        TIMESTAMP=$(TZ='Europe/Stockholm' date +'%Y-%m-%d_%H-%M-%S')
+        BRANCH=$(echo "${{ github.ref_name }}" | tr '/' '-')
+        echo "value=${BRANCH}-build${{ github.run_number }}-${SHORT_SHA}_${TIMESTAMP}" >> $GITHUB_OUTPUT
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:

@@ -24,7 +24,7 @@ jobs:
       run: npx playwright test
     - name: Set timestamp
       id: timestamp
-      run: echo "value=$(date +'%Y-%m-%d_%H-%M-%S')" >> $GITHUB_OUTPUT
+      run: echo "value=$(TZ='Europe/Stockholm' date +'%Y-%m-%d_%H-%M-%S')" >> $GITHUB_OUTPUT
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:

@@ -6,3 +6,4 @@ playwright/playwright-report/
 playwright/blob-report/
 playwright/.cache/
 playwright/.auth/
+playwright/.env

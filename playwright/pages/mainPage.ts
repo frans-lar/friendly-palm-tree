@@ -4,7 +4,7 @@ export class MainPage {
   constructor(private page: Page) {}
 
   async goto() {
-    await this.page.goto('/');
+    await this.page.goto('/store2');
   }
 
   async expectTitle(expectedTitle: string) {

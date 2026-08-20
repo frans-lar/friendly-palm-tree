@@ -44,6 +44,17 @@ export default defineConfig({
         ...devices['Desktop Chrome'],
       },
     },
+      
+    {
+      name: 'api',
+      testMatch: /api-tests\/.*\.spec\.ts/,
+      use: { 
+        baseURL: process.env.API_BASE_URL,
+        extraHTTPHeaders: {
+          'API_KEY': process.env.API_KEY!,
+        }
+      },
+    },
 
     {
       name: 'chromium',

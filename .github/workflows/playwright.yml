@@ -8,9 +8,6 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: playwright
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -33,5 +30,5 @@ jobs:
       if: ${{ !cancelled() }}
       with:
         name: Testrapport-${{ steps.timestamp.outputs.value }}
-        path: playwright/playwright-report/
+        path: playwright-report/
         retention-days: 30

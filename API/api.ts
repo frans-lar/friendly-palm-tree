@@ -1,6 +1,6 @@
 import { APIRequestContext } from '@playwright/test';   
 
-interface Student {
+export interface Student {
   name: string;
   age: string;
   grade: string;
@@ -20,6 +20,11 @@ interface GetStudentsResponse {
   updatedDate: string;
 }
 
+interface DeleteStudentResponse {
+  status: string;
+  message: string;
+}
+
 export class API {
   constructor(private request: APIRequestContext) {}
 
@@ -36,4 +41,8 @@ export class API {
     const response = await this.request.put(`/student/${studentId}`, { data: studentData });
     return await response.json();   
   } 
+  async deleteStudent(studentId: number): Promise<DeleteStudentResponse> {
+    const response = await this.request.delete(`/student/${studentId}`);
+    return await response.json();
+  }
 }

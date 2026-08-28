@@ -19,13 +19,26 @@ test('Lägger till en student', async ({ request}) => {
 
 
 
-/*
-test('hämtar studenter', async ({ request}) => {
+test('Uppdaterar en student', async ({ request}) => {
     const api = new API(request);
 
+    const response = await api.addStudent({
+        name: 'Test Hasse',
+        age: '33',
+        grade: 'B',
+    });
     const students = await api.getStudents();
-    expect(students.length).toBeGreaterThan(0);
-  
-});
+    const addedStudent = students.find(student => student.id === response.student_id);
+    await api.updateStudent(addedStudent!.id, {
+        name: 'Test Brasse',
+        age: '33',
+        grade: 'C',
+    });
+    const updatedStudents = await api.getStudents();
+    const updatedStudent = updatedStudents.find(student => student.id === addedStudent!.id);
 
-*/
+    expect(addedStudent).toBeDefined();
+    expect(updatedStudent?.name).toBe('Test Brasse');
+    expect(updatedStudent?.age).toBe('33');
+    expect(updatedStudent?.grade).toBe('C');
+}); 

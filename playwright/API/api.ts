@@ -32,5 +32,8 @@ export class API {
     return await response.json();   
 }
 
-
+  async updateStudent(studentId: number, studentData: Student): Promise<AddStudentResponse> {
+    const response = await this.request.put(`/student/${studentId}`, { data: studentData });
+    return await response.json();   
+  } 
 }

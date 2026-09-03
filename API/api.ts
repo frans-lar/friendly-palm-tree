@@ -1,6 +1,6 @@
 import { APIRequestContext } from '@playwright/test';   
 
-export interface Student {
+interface Student {
   name: string;
   age: string;
   grade: string;
@@ -32,6 +32,7 @@ export class API {
     const response = await this.request.get('/student');
     return await response.json();   
 }
+
  async addStudent(studentData: Student): Promise<AddStudentResponse> {
     const response = await this.request.post('/student', { data: studentData });
     return await response.json();   
@@ -41,8 +42,14 @@ export class API {
     const response = await this.request.put(`/student/${studentId}`, { data: studentData });
     return await response.json();   
   } 
+
   async deleteStudent(studentId: number): Promise<DeleteStudentResponse> {
     const response = await this.request.delete(`/student/${studentId}`);
+    return await response.json();
+  }
+
+  async deleteAllStudents(): Promise<DeleteStudentResponse> {
+    const response = await this.request.delete(`/student_delete_all`);
     return await response.json();
   }
 }

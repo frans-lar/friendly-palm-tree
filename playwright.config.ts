@@ -35,7 +35,7 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    { name: 'setup', testMatch: /.*\.setup\.ts/ },
+    { name: 'setup', testMatch: /auth\.setup\.ts/ },
 
     {
       name: 'login-tests',
@@ -45,15 +45,28 @@ export default defineConfig({
       },
     },
       
+    { name: 'api-cleanup', 
+      testMatch: /cleanup\.setup\.ts/ ,
+      use: { 
+        baseURL: process.env.API_BASE_URL,
+        extraHTTPHeaders: {
+          'accept': 'application/json',
+          'api_key': process.env.API_KEY!,
+        }
+      },
+    },
+
     {
       name: 'api',
       testMatch: /api-tests\/.*\.spec\.ts/,
       use: { 
         baseURL: process.env.API_BASE_URL,
         extraHTTPHeaders: {
-          'API_KEY': process.env.API_KEY!,
+          'accept': 'application/json',
+          'api_key': process.env.API_KEY!,
         }
       },
+      dependencies: ['api-cleanup'],
     },
 
     {

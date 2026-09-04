@@ -22,5 +22,34 @@ export class MainPage {
   voteButton(){
      return this.page.getByRole('button', { name: 'Vote'});
   }
+  async selectProduct(productName: string) {
+    await this.page.getByTestId('select-product').selectOption(productName);
+  }
 
+   async selectAmount(amount: string) {
+    await this.page.locator('#buyAmount').fill(amount);
+  }
+
+  async addToCart() {
+    await this.page.getByTestId('add-to-cart-button').click();
+  }
+  async clickBuyButton() {
+    await this.page.locator('#button-finalize-purchase').click();
+    
+  }
+  async buyerNameInput(name: string) {
+    await this.page.locator('#buyerName').fill(name);
+  } 
+
+   async buyeraddressInput(address: string) {
+    await this.page.locator('#buyerAddress').fill(address);
+  } 
+
+    async confirmPurchaseButton() {
+    await this.page.locator('#confirmPurchaseButton').click();
+  } 
+
+    amountTotal() {
+      return this.page.locator('#receiptTotal');
+  }  
 }

@@ -19,6 +19,12 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test
+      env:
+        USERNAME: ${{ secrets.CI_USERNAME }}
+        BASE_URL: ${{ secrets.CI_BASE_URL }}
+        PASSWORD: ${{ secrets.CI_PASSWORD }}
+        API_KEY: ${{ secrets.CI_API_KEY }}
+        API_BASE_URL: ${{ secrets.CI_API_BASE_URL }}
     - name: Set timestamp
       id: timestamp
       run: |

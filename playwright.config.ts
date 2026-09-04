@@ -84,6 +84,8 @@ export default defineConfig({
       testMatch: /authenticated\/.*\.spec\.ts/,
       use: { ...devices['Desktop Firefox'], 
         storageState: path.join(__dirname, '.auth/user.json'),  
+
+
       },
       dependencies: ['setup'], 
     },

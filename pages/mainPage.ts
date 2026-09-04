@@ -34,7 +34,7 @@ export class MainPage {
     await this.page.getByTestId('add-to-cart-button').click();
   }
   async clickBuyButton() {
-    await this.page.locator('#button-finalize-purchase').click();
+    await this.page.getByRole('button', { name: 'Buy' }).click();
     
   }
   async buyerNameInput(name: string) {

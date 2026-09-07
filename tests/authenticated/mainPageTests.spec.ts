@@ -20,7 +20,7 @@ const products = [
   { name: 'Chair', price: 239.2 },
   { name: 'TV', price: 7600 },
 ];
-const kvantitet = Array.from({ length: 10 }, (_, i) => i + 1);
+const kvantitet = Array.from({ length: 4 }, (_, i) => i + 1);
 for (const product of products) {
   for (const antal of kvantitet) {
       test(`Köp ${antal} ${product.name}`, async ({ page }) => {

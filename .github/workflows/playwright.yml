@@ -4,6 +4,12 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   test:
     environment: dev
@@ -39,3 +45,14 @@ jobs:
         name: Testrapport-${{ steps.timestamp.outputs.value }}
         path: playwright-report/
         retention-days: 30
+    
+    - name: Upload Pages artifacts
+      if: always()
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: playwright-report
+      
+    - name: deploy to GitHub Pages
+      if: always()
+      id: deployment
+      uses: actions/deploy-pages@v4

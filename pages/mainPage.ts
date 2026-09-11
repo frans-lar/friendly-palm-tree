@@ -32,7 +32,6 @@ export class MainPage {
 
   async addToCart() {
     await this.page.getByRole('button', { name: 'Add to Cart' }).click();
-    //await this.page.getByTestId('add-to-cart-button').click();
   }
   async clickBuyButton() {
     await this.page.getByRole('button', { name: 'Buy' }).click();

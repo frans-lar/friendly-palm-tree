@@ -35,7 +35,9 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    { name: 'setup', testMatch: /auth\.setup\.ts/ },
+    { name: 'setup-business', testMatch: /auth\.bus\.setup\.ts/ },
+
+    { name: 'setup-consumer', testMatch: /auth\.con\.setup\.ts/ },
 
     {
       name: 'login-tests',
@@ -70,35 +72,62 @@ export default defineConfig({
     },
 
     {
-      name: 'chromium',
-      testMatch: /authenticated\/.*\.spec\.ts/,
+      name: 'chromium-business',
+      testMatch: /authenticated\/business\/.*\.spec\.ts/,
       use: { ...devices['Desktop Chrome'], 
-        storageState: path.join(__dirname, '.auth/user.json'), 
+        storageState: path.join(__dirname, '.auth/business.json'), 
       },
-      dependencies: ['setup'],
+      dependencies: ['setup-business'],
+    },
+
+    {
+      name: 'chromium-consumer',
+      testMatch: /authenticated\/consumer\/.*\.spec\.ts/,
+      use: { ...devices['Desktop Chrome'], 
+        storageState: path.join(__dirname, '.auth/consumer.json'), 
+      },
+      dependencies: ['setup-consumer'],
     },
 
 
     {
-      name: 'firefox',
-      testMatch: /authenticated\/.*\.spec\.ts/,
+      name: 'firefox-business',
+      testMatch: /authenticated\/business\/.*\.spec\.ts/,
       use: { ...devices['Desktop Firefox'], 
-        storageState: path.join(__dirname, '.auth/user.json'),  
+        storageState: path.join(__dirname, '.auth/business.json'),  
 
 
       },
-      dependencies: ['setup'], 
+      dependencies: ['setup-business'], 
     },
     
+    {
+      name: 'firefox-consumer',
+      testMatch: /authenticated\/.*\.spec\.ts/,
+      use: { ...devices['Desktop Firefox'], 
+        storageState: path.join(__dirname, '.auth/consumer.json'),  
 
+
+      },
+      dependencies: ['setup-consumer'], 
+    },
 
     {
-      name: 'webkit',
-      testMatch: /authenticated\/.*\.spec\.ts/,
+      name: 'webkit-business',
+      testMatch: /authenticated\/business\/.*\.spec\.ts/,
       use: { ...devices['Desktop Safari'], 
-        storageState: path.join(__dirname, '.auth/user.json'),  
+        storageState: path.join(__dirname, '.auth/business.json'),  
       },
-      dependencies: ['setup'],
+      dependencies: ['setup-business'],
+    },
+
+    {
+      name: 'webkit-consumer',
+      testMatch: /authenticated\/consumer\/.*\.spec\.ts/,
+      use: { ...devices['Desktop Safari'], 
+        storageState: path.join(__dirname, '.auth/consumer.json'),  
+      },
+      dependencies: ['setup-consumer'],
     },
     
 

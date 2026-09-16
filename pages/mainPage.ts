@@ -50,6 +50,6 @@ export class MainPage {
   } 
 
     amountTotal() {
-      return this.page.locator('#receiptTotal');
+      return this.page.locator('#receiptGrandTotal');
   }  
 }

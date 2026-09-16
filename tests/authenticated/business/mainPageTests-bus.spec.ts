@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { MainPage } from '../../pages/mainPage';
+import { MainPage } from '../../../pages/mainPage';
 
-test('test av huvudsida', async ({ page }) => {
+test('test av huvudsida business', async ({ page }) => {
   const mainPage = new MainPage(page);
   
   await mainPage.goto();
@@ -20,10 +20,11 @@ const products = [
   { name: 'Chair', price: 239.2 },
   { name: 'TV', price: 7600 },
 ];
+
 const kvantitet = Array.from({ length: 4 }, (_, i) => i + 1);
 for (const product of products) {
   for (const antal of kvantitet) {
-      test(`Köp ${antal} ${product.name}`, async ({ page }) => {
+      test(`Köp ${antal} ${product.name} - Business`, async ({ page }) => {
         const mainPage = new MainPage(page);
 
           await mainPage.goto();
@@ -44,3 +45,24 @@ for (const product of products) {
   }})
         }
       };
+      
+test('test räkna summa kundkorg', async ({ page }) => {
+  const mainPage = new MainPage(page);
+  
+  await mainPage.goto();
+  await mainPage.expectTitle('The Hoff Store');
+});      
+
+test('test att tömma kundkorg', async ({ page }) => {
+  const mainPage = new MainPage(page);
+  
+  await mainPage.goto();
+  await mainPage.expectTitle('The Hoff Store');
+});
+
+test('Verifiera namn och adress', async ({ page }) => {
+  const mainPage = new MainPage(page);
+  
+  await mainPage.goto();
+  await mainPage.expectTitle('The Hoff Store');
+});

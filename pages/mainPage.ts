@@ -49,7 +49,15 @@ export class MainPage {
     await this.page.getByRole('button', { name: "Confirm Purchase" }).click();
   } 
 
-    amountTotal() {
+    amountTotalreceipt() {
       return this.page.locator('#receiptGrandTotal');
   }  
+    amountGrandTotal() {
+      return this.page.locator('#grandTotal');
+  } 
+    async clickRemoveButton() {
+      await this.page.getByRole('button', { name: 'Remove' }).click();
+  } 
+
 }
+

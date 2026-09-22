@@ -53,29 +53,9 @@ for (const product of products) {
           await mainPage.buyeraddressInput('Nathorstgatan 1');
           await mainPage.confirmPurchaseButton();
           
-          await expect(mainPage.amountTotal()).toHaveText(totalPris.toString());
+          await expect(mainPage.amountTotalreceipt()).toHaveText(totalPris.toString());
   }})
         }
       };
 
 
-test('test räkna summa kundkorg', async ({ page }) => {
-  const mainPage = new MainPage(page);
-  
-  await mainPage.goto();
-  await mainPage.expectTitle('The Hoff Store');
-});      
-
-test('test att tömma kundkorg', async ({ page }) => {
-  const mainPage = new MainPage(page);
-  
-  await mainPage.goto();
-  await mainPage.expectTitle('The Hoff Store');
-});
-
-test('Verifiera namn och adress', async ({ page }) => {
-  const mainPage = new MainPage(page);
-  
-  await mainPage.goto();
-  await mainPage.expectTitle('The Hoff Store');
-});

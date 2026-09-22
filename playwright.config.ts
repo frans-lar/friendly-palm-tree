@@ -103,7 +103,7 @@ export default defineConfig({
     
     {
       name: 'firefox-consumer',
-      testMatch: /authenticated\/.*\.spec\.ts/,
+      testMatch: /authenticated\/consumer\/.*\.spec\.ts/,
       use: { ...devices['Desktop Firefox'], 
         storageState: path.join(__dirname, '.auth/consumer.json'),  
 

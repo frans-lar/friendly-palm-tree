@@ -1,8 +1,6 @@
 import { test as setup, expect } from '@playwright/test';
 import path from 'path';
-import { fileURLToPath } from 'url';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const authFileBus = path.join(__dirname, '../.auth/business.json');
 
 setup('authenticate as business user', async ({ page }) => {
